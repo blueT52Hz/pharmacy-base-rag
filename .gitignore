@@ -1,0 +1,6 @@
+.env
+storage/
+__pycache__/
+.venv/
+# Bộ dữ liệu tiếng Anh ~84 MB, quá lớn cho git (giữ local)
+data/ds-thuoc-dailymed.csv
