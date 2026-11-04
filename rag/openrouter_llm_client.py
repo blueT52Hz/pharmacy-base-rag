@@ -19,13 +19,14 @@ def _get_client() -> OpenAI:
 
 def stream_chat(messages: list[dict]) -> Iterator[str]:
     """Yield từng đoạn text của câu trả lời."""
-    stream = _get_client().chat.completions.create(
+    # `with`: người hỏi ngắt giữa chừng (generator bị đóng) thì đóng luôn kết nối tới LLM, không sinh tiếp token.
+    with _get_client().chat.completions.create(
         model=LLM_MODEL,
         messages=messages,
         temperature=LLM_TEMPERATURE,
         stream=True,
         extra_headers={"X-Title": "Baseline RAG hoi dap thuoc"},
-    )
-    for event in stream:
-        if event.choices and event.choices[0].delta.content:
-            yield event.choices[0].delta.content
+    ) as stream:
+        for event in stream:
+            if event.choices and event.choices[0].delta.content:
+                yield event.choices[0].delta.content

@@ -32,3 +32,6 @@ EMBEDDING_MODEL = _env("EMBEDDING_MODEL", "intfloat/multilingual-e5-small")
 CHUNK_SIZE = int(_env("CHUNK_SIZE", "1000"))
 CHUNK_OVERLAP = int(_env("CHUNK_OVERLAP", "150"))
 TOP_K = int(_env("TOP_K", "6"))
+
+# API cho BE NestJS gọi (api.py). Rỗng = không kiểm khoá; chỉ nên để rỗng khi server bind 127.0.0.1.
+RAG_INTERNAL_KEY = _env("RAG_INTERNAL_KEY", "")

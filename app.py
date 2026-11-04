@@ -5,13 +5,8 @@ Chạy: streamlit run app.py
 import streamlit as st
 
 from rag.config import DATA_CSV_PATH, EMBEDDING_MODEL, LLM_MODEL, TOP_K
+from rag.example_questions import EXAMPLE_QUESTIONS
 from rag.rag_pipeline import RagPipeline, RetrievedChunk
-
-EXAMPLE_QUESTIONS = [
-    "Metformin chống chỉ định với những trường hợp nào?",
-    "Liều dùng ibuprofen 200mg cho người lớn là bao nhiêu?",
-    "Tác dụng phụ thường gặp của amoxicillin là gì?",
-]
 
 st.set_page_config(page_title="Hỏi đáp thuốc - Baseline RAG", page_icon="💊", layout="wide")
 
